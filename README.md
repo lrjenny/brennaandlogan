@@ -1,2 +1,3 @@
 # lrjenny.github.io
-A website for my girlfriend
+This project was a gift for my girlfriend
+brennaandlogan.com
