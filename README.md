@@ -1,3 +1,4 @@
 # lrjenny.github.io
 This project was a gift for my girlfriend
-brennaandlogan.com
+
+https://www.brennaandlogan.com
