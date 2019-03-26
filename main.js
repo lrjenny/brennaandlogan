@@ -10,9 +10,13 @@ var ASSET_MANAGER = new AssetManager();
 // All images need to be queueDownloaded here. Just copy one of the existing lines and change the image path
 // to match the image you want to use. example: copy/paste the first line and change 'shelf' to 'cactus' or something
 ASSET_MANAGER.queueDownload("./images/shelf.png");
+ASSET_MANAGER.queueDownload("./images/heart.png");
+ASSET_MANAGER.queueDownload("./images/smile.png");
 ASSET_MANAGER.queueDownload("./images/grass.png");
-ASSET_MANAGER.queueDownload("./images/plant.png");
+ASSET_MANAGER.queueDownload("./images/pileapep.png");
 ASSET_MANAGER.queueDownload("./images/plant2.png");
+ASSET_MANAGER.queueDownload("./images/leafs.png");
+ASSET_MANAGER.queueDownload("./images/melonpep.png");
 
 
 //the download all function is where the magic happens. It takes all the queued images, downloads them to
@@ -41,9 +45,11 @@ ASSET_MANAGER.downloadAll(function () {
     // and increase it to move things down.
 
     //  <name>               <game>        <image path>     <x>  <y>
-    var grass = new Plant(gameEngine, "./images/grass.png", 150, 120);
-    var plant = new Plant(gameEngine, "./images/plant.png", 250, 120);
-    var plant2 = new Plant(gameEngine, "./images/plant2.png", 350, 120);
+    var grass = new Plant(gameEngine, "./images/grass.png", 170, 120);
+    var pileapep = new Plant(gameEngine, "./images/pileapep.png", 270, 120);
+    var plant2 = new Plant(gameEngine, "./images/plant2.png", 370, 120);
+    var leafs = new Plant(gameEngine, "./images/leafs.png", 470, 120);
+    var melonpep = new Plant(gameEngine, "./images/melonpep.png", 570, 120);
 
 
 
@@ -56,8 +62,10 @@ ASSET_MANAGER.downloadAll(function () {
     //make sure you use the same name as when you declared it in the above step.
     gameEngine.addEntity(bg);
     gameEngine.addEntity(grass);
-    gameEngine.addEntity(plant);
+    gameEngine.addEntity(pileapep);
     gameEngine.addEntity(plant2);
+    gameEngine.addEntity(leafs);
+    gameEngine.addEntity(melonpep);
  
 
     //these last two lines just start up the game after all the entities have been added.

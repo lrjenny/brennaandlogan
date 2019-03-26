@@ -5,15 +5,12 @@
  */
 
 function Background(game) {
+    this.animation = new Animation(ASSET_MANAGER.getAsset("./images/shelf.png"), 0, 0, 800, 700, 1, 1, true, true);
     Entity.call(this, game, 0, 0);
 }
 
-Background.prototype = new Entity();
-Background.prototype.constructor = Background;
+Background.prototype.update = function () {}
 
-Background.prototype.update = function () {
-    this.animation = new Animation(ASSET_MANAGER.getAsset("./images/shelf.png"), 0, 0, 800, 700, 1, 1, true, true);
-}
 Background.prototype.draw = function (ctx) {
 	this.animation.drawStatic(ctx, this.x, this.y);
     Entity.prototype.draw.call(this);
@@ -30,18 +27,64 @@ Background.prototype.draw = function (ctx) {
 
 function Plant(game, image, posx, posy) {
     this.image = image;
+    this.game = game;
+    this.happy = false;
+    this.count = 0;
     this.animation = new Animation(ASSET_MANAGER.getAsset(this.image), 0, 0, 64, 64, 1, 1, true, false);
     Entity.call(this, game, posx, posy);
 }
 
 Plant.prototype = new Entity();
-Plant.prototype.constructor = Background;
+Plant.prototype.constructor = Plant;
 
 Plant.prototype.update = function () {
-    this.animation = new Animation(ASSET_MANAGER.getAsset(this.image), 0, 0, 64, 64, 1, 1, true, false);
+    if(this.game.space) this.happy = true;
+    if(this.happy) {
+        this.game.addEntity(new Effect(this.game, this.x + 5, this.y - 10))
+        this.happy = false;
+    }
 }
 
 Plant.prototype.draw = function (ctx) {
+	this.animation.drawStatic(ctx, this.x, this.y);
+    Entity.prototype.draw.call(this);
+}
+
+
+
+function Effect(game, posx, posy) {
+    this.xStart = posx;
+    this.yStart = posy;
+    this.goRight = true;
+    this.image = Math.floor(Math.random() * 2) == 1 ? "./images/heart.png" : "./images/smile.png";
+    this.animation = new Animation(ASSET_MANAGER.getAsset(this.image), 0, 0, 14, 12, 1, 1, true, false);
+    Entity.call(this, game, posx, posy);
+}
+
+Effect.prototype = new Entity();
+Effect.prototype.constructor = Effect;
+
+Effect.prototype.update = function () {
+    if(this.x > this.xStart + 40) {
+        this.goRight = false;
+    }
+    if(this.x < this.xStart) {
+        this.goRight = true;
+    }
+
+    if(this.goRight) {
+        this.x+=3;
+    } else {
+        this.x-=3;
+    }
+
+    this.y-=1;
+    if(this.y < this.yStart - 40) {
+        this.removeFromWorld = true;
+    }
+}
+
+Effect.prototype.draw = function (ctx) {
 	this.animation.drawStatic(ctx, this.x, this.y);
     Entity.prototype.draw.call(this);
 }
