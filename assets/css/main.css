@@ -71,6 +71,17 @@ input, select, textarea {
 	appearance: none;
 }
 
+.container {
+	padding: 100;
+	margin: 100;
+	position: relative;
+	align-content: center;
+	text-align: center;
+}
+.formInput {
+	text-align: center;
+}
+
 /* Basic */
 
 	@-ms-viewport {
