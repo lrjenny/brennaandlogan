@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+Input Your Choice:<br>
+<input id="choice" type="text" name="firstname" value="">
+<br>
+<br>
+<input type="button" value="Submit" onclick="acceptInput()">
+<br>
+<br>
+<br>
+<br>
+<input type="button" value="Click When Everyone Is Done" onclick="returnChoices()">
+
+<p id="demo"></p>
+<script>
+    var choices = [];
+	function acceptInput(){
+		var newArray = document.getElementById("choice").value;
+		choices.push(newArray);
+		document.getElementById("choice").value = "";
+	 }
+	 
+	 function returnChoices() {
+		document.getElementById("demo").innerHTML = choices;
+	 }
+</script>
+
+</body>
+</html>
