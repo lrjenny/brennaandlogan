@@ -21,6 +21,8 @@
 	<br>
 	<br>
 	<input type="button" value="Click When Everyone Is Done" onclick="returnChoices()">
+        <br>
+        <input type="button" value="Reset" onclick="clearArray()">
 </div>
 
 <p id="demo"></p>
@@ -35,7 +37,9 @@
 	 function returnChoices() {
 		document.getElementById("demo").innerHTML = choices;
 	 }
-</script>
+         function clearArray() {
+		choices = [];
+	 }/script>
 
 </body>
 </html>
